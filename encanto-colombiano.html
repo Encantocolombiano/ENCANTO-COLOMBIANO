@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encanto Colombiano - Descubre la Magia de Colombia</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --amarillo-colombia: #FCDC00;
+            --azul-colombia: #003087;
+            --rojo-colombia: #C8102E;
+            --verde-selva: #228B22;
+            --cafe-colombia: #8B4513;
+            --coral-caribe: #FF6B6B;
+            --blanco: #FFFFFF;
+            --gris-claro: #F5F5F5;
+            --negro: #2C2C2C;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--negro);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--amarillo-colombia) 0%, var(--azul-colombia) 100%);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--blanco);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 32px;
+            animation: bounce 2s infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,48,135,0.7), rgba(200,16,46,0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23228B22" width="1200" height="600"/><circle fill="%23FCDC00" cx="300" cy="150" r="80" opacity="0.3"/><circle fill="%23FF6B6B" cx="800" cy="400" r="60" opacity="0.4"/><path fill="%238B4513" d="M0,500 Q300,400 600,450 T1200,420 L1200,600 L0,600 Z" opacity="0.6"/></svg>');
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--blanco);
+            background-size: cover;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--amarillo-colombia);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--rojo-colombia), var(--coral-caribe));
+            color: var(--blanco);
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(200,16,46,0.3);
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(200,16,46,0.4);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--gris-claro);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            padding: 30px;
+            background: var(--blanco);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--azul-colombia);
+            margin-bottom: 10px;
+        }
+
+        /* Destinations Section */
+        .destinations {
+            padding: 100px 0;
+            background: var(--blanco);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--azul-colombia);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--cafe-colombia);
+            margin-bottom: 60px;
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .destination-card {
+            background: var(--blanco);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .card-image {
+            height: 250px;
+            background: linear-gradient(45deg, var(--verde-selva), var(--amarillo-colombia));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanco);
+            font-size: 4rem;
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            color: var(--azul-colombia);
+            margin-bottom: 15px;
+        }
+
+        .card-content p {
+            color: var(--cafe-colombia);
+            margin-bottom: 20px;
+        }
+
+        .card-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--rojo-colombia);
+            margin-bottom: 20px;
+        }
+
+        .card-button {
+            background: linear-gradient(45deg, var(--amarillo-colombia), var(--coral-caribe));
+            color: var(--negro);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .card-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Team Section */
+        .team {
+            background: linear-gradient(135deg, var(--azul-colombia) 0%, var(--verde-selva) 100%);
+            padding: 100px 0;
+            color: var(--blanco);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: scale(1.05);
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--amarillo-colombia), var(--coral-caribe));
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--negro);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--gris-claro);
+            padding: 100px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-info {
+            padding: 40px;
+        }
+
+        .contact-form {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--gris-claro);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--azul-colombia);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--negro);
+            color: var(--blanco);
+            padding: 60px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--amarillo-colombia);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--coral-caribe);
+            transform: scale(1.2);
+        }
+
+        /* Animations */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .destinations-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Interactive Elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { top: 60%; right: 10%; animation-delay: 2s; }
+        .floating-element:nth-child(3) { bottom: 20%; left: 20%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-element">🌺</div>
+        <div class="floating-element">🦋</div>
+        <div class="floating-element">🌿</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-mountain"></i>
+                ENCANTO COLOMBIANO
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#destinos">Destinos</a></li>
+                <li><a href="#equipo">Nuestro Equipo</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Descubre el Encanto Colombiano</h1>
+                <p class="subtitle">¡Vive aventuras únicas en el país más acogedor del mundo! 🇨🇴</p>
+                <p>Desde las playas del Caribe hasta los cafetales de los Andes, pasando por la magia del Amazonas. Colombia te espera con experiencias auténticas y momentos inolvidables.</p>
+                <a href="#destinos" class="cta-button">
+                    <i class="fas fa-plane"></i> ¡Comienza tu Aventura!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <h2 class="section-title">Miles de viajeros ya han vivido la experiencia</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">15,000+</div>
+                    <p>Viajeros felices</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">32</div>
+                    <p>Destinos únicos</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4.9</div>
+                    <p>⭐ Calificación promedio</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">7</div>
+                    <p>Años de experiencia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="destinations" id="destinos">
+        <div class="container">
+            <h2 class="section-title">Destinos que Enamoran</h2>
+            <p class="section-subtitle">Cada rincón de Colombia tiene su propia magia. ¿Cuál te llama más?</p>
+            
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <div class="card-image">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Costa Caribeña</h3>
+                        <p>Cartagena, Santa Marta y las playas más paradisíacas. Historia colonial, cultura vibrante y aguas cristalinas te esperan.</p>
+                        <div class="card-price">Desde $850.000 COP</div>
+                        <button class="card-button">Ver Aventura</button>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="card-image">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Eje Cafetero</h3>
+                        <p>Paisajes de ensueño, el mejor café del mundo y pueblos llenos de color. Una experiencia sensorial única.</p>
+                        <div class="card-price">Desde $720.000 COP</div>
+                        <button class="card-button">Ver Aventura</button>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="card-image">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Amazonas Salvaje</h3>
+                        <p>Aventúrate en el pulmón del mundo. Flora, fauna única y comunidades indígenas con sabiduría ancestral.</p>
+                        <div class="card-price">Desde $1.200.000 COP</div>
+                        <button class="card-button">Ver Aventura</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="equipo">
+        <div class="container">
+            <h2 class="section-title">Nuestros Guías Expertos</h2>
+            <p class="section-subtitle">Apasionados colombianos que te mostrarán los secretos mejor guardados de nuestro país</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Carlos Mendoza</h3>
+                    <p><strong>Guía Costa Caribe</strong></p>
+                    <p>¡Hola viajeros! 🌊 Soy costeño de corazón, nacido en Cartagena. Con 8 años compartiendo los secretos del Caribe colombiano. Te llevaré por playas escondidas y te enseñaré a bailar vallenato como un local. ¡Prepárate para vivir la costa con sabor auténtico!</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3>Ana María Ospina</h3>
+                    <p><strong>Experta en Café</strong></p>
+                    <p>¡Saludos cafeteros! ☕ Soy paisa de Manizales, crecí entre cafetales y conozco cada aroma del café colombiano. Mi pasión es mostrarte desde la semilla hasta la taza perfecta. Juntos descubriremos por qué nuestro café es el mejor del mundo.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Miguel Yaguas</h3>
+                    <p><strong>Guardián del Amazonas</strong></p>
+                    <p>¡Bienvenidos a la selva! 🦜 Soy descendiente de la comunidad Tikuna y tu puente hacia la sabiduría ancestral. En el Amazonas cada sonido cuenta una historia. Ven conmigo a descubrir la farmacia natural más grande del planeta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <h2 class="section-title">¡Planea tu Próxima Aventura!</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>¿Listo para vivir Colombia?</h3>
+                    <p>Contáctanos y diseñemos juntos la aventura perfecta para ti. Cada viaje es único, como cada viajero.</p>
+                    
+                    <div class="contact-details">
+                        <div style="margin: 20px 0;">
+                            <i class="fas fa-phone" style="color: var(--amarillo-colombia); margin-right: 10px;"></i>
+                            <strong>+57 300 123 4567</strong>
+                        </div>
+                        <div style="margin: 20px 0;">
+                            <i class="fas fa-envelope" style="color: var(--coral-caribe); margin-right: 10px;"></i>
+                            <strong>hola@encantocolombiano.com</strong>
+                        </div>
+                        <div style="margin: 20px 0;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--verde-selva); margin-right: 10px;"></i>
+                            <strong>Bogotá, Colombia</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Tu nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Tu email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Tu teléfono">
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Cuéntanos qué tipo de aventura buscas..."></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">
+                            Enviar Mensaje <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>Encanto Colombiano</h4>
+                    <p>Tu puerta de entrada a las maravillas de Colombia. Experiencias auténticas, recuerdos inolvidables.</p>
+                </div>
+                <div>
+                    <h4>Destinos Populares</h4>
+                    <p>• Costa Caribeña<br>• Eje Cafetero<br>• Amazonas<br>• Bogotá y alrededores</p>
+                </div>
+                <div>
+                    <h4>Servicios</h4>
+                    <p>• Tours personalizados<br>• Guías locales<br>• Transporte incluido<br>• Experiencias culturales</p>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <p style="margin-top: 30px; opacity: 0.7;">
+                © 2025 Encanto Colombiano. Hecho con ❤️ en Colombia.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 48, 135, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--amarillo-colombia) 0%, var(--azul-colombia) 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animate stats on scroll
+        const animateStats = () => {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseInt(stat.textContent.replace(/[+,]/g, ''));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateStat = () => {
+                    current += increment;
+                    if (current < target) {
+                        stat.textContent = Math.floor(current).toLocaleString();
+                        requestAnimationFrame(updateStat);
+                    } else {
+                        stat.textContent = stat.textContent; // Keep original format
+                    }
+                };
+                
+                updateStat();
+            });
+        };
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    
+                    if (entry.target.classList.contains('stats')) {
+                        animateStats();
+                    }
+                }
+            });
+        });
+
+        // Observe elements for animation
+        document.querySelectorAll('.destination-card, .team-member, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('¡Gracias por tu interés! Te contactaremos pronto para planear tu aventura colombiana 🇨🇴✨');
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.destination-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
